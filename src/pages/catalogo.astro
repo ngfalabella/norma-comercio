@@ -1,0 +1,61 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProductCard from '../components/ProductCard.astro';
+import MobileCategoryNav from '../components/MobileCategoryNav.astro';
+import DesktopCategoryNav from '../components/DesktopCategoryNav.astro';
+//import products from '../data/productos.json';
+export const prerender = false;
+
+const URL_SHEET_JSON = import.meta.env.PUBLIC_SHEET_COMER
+
+const res = await fetch(URL_SHEET_JSON, { cache: "no-store" });
+const data = await res.json();
+
+const products = Array.isArray(data) ? data : data.data ?? Object.values(data);
+
+const categorias = [...new Set(products.map(p => p.categoria))];
+
+const lista = JSON.stringify(products, null, 2)
+
+---
+
+<Layout title="Catálogo | Moka ">
+    
+    <MobileCategoryNav />
+
+    <div class="flex items-start gap-12 pb-24 md:pb-10 pt-4 md:pt-10 scroll-mt-32">
+        
+        <DesktopCategoryNav />
+
+        <div class="flex-1 space-y-16 md:space-y-24 min-w-0"> 
+            
+            {categorias.map(categoria => (
+                <section id={categoria} class="scroll-mt-32 md:scroll-mt-48 fade-in">
+                    <div class="flex items-baseline gap-4 mb-8">
+                        <h3 class="font-serif text-3xl text-norma-dark">{categoria}</h3>
+                        <div class="h-px bg-norma-dark/10 grow"></div>
+                        <span class="text-xs text-norma-muted font-mono hidden sm:inline-block">
+                            {products.filter(p => p.categoria === categoria).length} productos
+                        </span>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-x-6 gap-y-10">
+                        {products.filter(p => p.categoria === categoria).map((producto) => (
+                            <ProductCard 
+                                id={producto.id}
+                                nombre={producto.nombre}
+                                precio={producto.precio}
+                                categoria={producto.categoria}
+                            />
+                        ))}
+                    </div>
+                </section>
+            ))}
+
+            <div class="h-24 md:h-0"></div>
+            <div class="text-center py-4 opacity-50">
+                <span class="text-2xl">❧</span>
+            </div>
+        </div>
+    </div>
+</Layout>

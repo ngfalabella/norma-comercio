@@ -1,0 +1,154 @@
+[
+  {
+    "id": "brownie-clasico",
+    "nombre": "BROWNIE",
+    "descripcion": "Brownie húmedo, decorado con dulce de leche. Tamaño: 20cm.",
+    "precio": "$18.000",
+    "categoria": "Brownies"
+  },
+  {
+    "id": "brownie-oreo",
+    "nombre": "BROWNIE OREO",
+    "descripcion": "Brownie húmedo con dulce de leche, crema chantilly, Oreos y tiras de chocolate. Tamaño: 20cm.",
+    "precio": "$28.800",
+    "categoria": "Brownies"
+  },
+  {
+    "id": "brownie-frutos-rojos",
+    "nombre": "BROWNIE FRUTOS ROJOS",
+    "descripcion": "Brownie húmedo con dulce de leche, crema chantilly, mermelada de frutos rojos, decorado con frutos rojos. Tamaño: 20cm.",
+    "precio": "$28.800",
+    "categoria": "Brownies"
+  },
+  {
+    "id": "brownie-frutilla",
+    "nombre": "BROWNIE FRUTILLA",
+    "descripcion": "Brownie húmedo, con dulce de leche, chantilly con frutillas y Oreos bañadas en chocolate blanco. Tamaño: 20cm.",
+    "precio": "$33.000",
+    "categoria": "Brownies"
+  },
+  {
+    "id": "brownie-crema",
+    "nombre": "BROWNIE CREMA",
+    "descripcion": "Brownie húmedo, con dulce de leche y chantilly, decorado con tiras de chocolate semiamargo. Tamaño: 20cm.",
+    "precio": "$24.000",
+    "categoria": "Brownies"
+  },
+  {
+    "id": "cabsha",
+    "nombre": "CABSHA",
+    "descripcion": "Masa sablee de vainilla relleno de dulce de leche con una ganache de chocolate semi-amargo. Tamaño: 22cm.",
+    "precio": "$20.200",
+    "categoria": "Tortas"
+  },
+  {
+    "id": "tarta-coco",
+    "nombre": "TARTA DE COCO",
+    "descripcion": "Masa sablee de vainilla, relleno de dulce de leche y coco. Tamaño: 22cm.",
+    "precio": "$19.900",
+    "categoria": "Tortas"
+  },
+  {
+    "id": "keylime",
+    "nombre": "KEYLIME",
+    "descripcion": "Masa sablee de vainilla, relleno de leche condensada a base de limas. Tamaño: 22cm.",
+    "precio": "$23.000",
+    "categoria": "Tortas"
+  },
+  {
+    "id": "lemon-pie",
+    "nombre": "LEMON PIE",
+    "descripcion": "Masa sablee de vainilla con relleno de leche condensada a base de limón. Tamaño: 22cm.",
+    "precio": "$23.000",
+    "categoria": "Tortas"
+  },
+  {
+    "id": "tarta-frutilla",
+    "nombre": "TARTA DE FRUTILLA",
+    "descripcion": "Masa sablee de vainilla, rellena con dulce de leche, crema chantilly y frutillas. Tamaño: 22 cm.",
+    "precio": "$23.300",
+    "categoria": "Tortas"
+  },
+  {
+    "id": "cheesecake-frio",
+    "nombre": "CHEESECAKE FRIO",
+    "descripcion": "Variedades disponibles: Frambuesas, Frutos Rojos, Maracuyá. Tamaño: 20 cm.",
+    "precio": "$32.000",
+    "categoria": "Cheesecakes"
+  },
+  {
+    "id": "mousse-chocolate",
+    "nombre": "MOUSSE DE CHOCOLATE",
+    "descripcion": "Base de brownie, mousse de chocolate semi amargo. Tamaño: 20 cm.",
+    "precio": "$31.900",
+    "categoria": "Mousses"
+  },
+  {
+    "id": "rogel",
+    "nombre": "ROGEL",
+    "descripcion": "Rogel de 13 capas decorado con merengue italiano. Tamaño: 20 cm.",
+    "precio": "Consultar",
+    "categoria": "Tortas"
+  },
+  {
+    "id": "chocotorta",
+    "nombre": "CHOCOTORTA",
+    "descripcion": "Galletitas embebidas en leche, café y cacao, con mezcla de queso y dulce de leche.",
+    "precio": "$32.600",
+    "categoria": "Tortas"
+  },
+  {
+    "id": "tarta-avellanas",
+    "nombre": "TARTA DE AVELLANAS",
+    "descripcion": "Sablee de chocolate relleno con húmedo de chocolate, praliné de avellanas y mousse de chocolate semi amargo. Tamaño: 22 cm.",
+    "precio": "$39.300",
+    "categoria": "Tortas"
+  },
+  {
+    "id": "torta-patagonia",
+    "nombre": "TORTA PATAGONIA",
+    "descripcion": "Bizcochuelo de chocolate relleno de crema bariloche y otro relleno de chantilly de frutos rojos. Tamaño: 20 cm.",
+    "precio": "Consultar",
+    "categoria": "Tortas"
+  },
+  {
+    "id": "torta-matilda",
+    "nombre": "TORTA MATILDA",
+    "descripcion": "Bizcochuelo de chocolate con relleno de crema bariloche. Tamaño: 20 cm.",
+    "precio": "$37.600",
+    "categoria": "Tortas"
+  },
+  {
+    "id": "cheesecake-pistacho",
+    "nombre": "CHEESECAKE NY DE PISTACHO",
+    "descripcion": "Base de galletitas, relleno de cheese y pistacho, decorado con crema chantilly a base de chocolate blanco y frambuesas. Tamaño: 22 cm.",
+    "precio": "$51.700",
+    "categoria": "Cheesecakes"
+  },
+  {
+    "id": "alfajorcitos-maicena",
+    "nombre": "ALFAJORCITOS DE MAICENA",
+    "descripcion": "Presentación de 1,2 KG.",
+    "precio": "$26.000",
+    "categoria": "Alfajores"
+  },
+  {
+    "id": "alfajorcitos-nuez",
+    "nombre": "ALFAJORCITOS DE NUEZ",
+    "descripcion": "Presentación de 6 unidades.",
+    "precio": "$13.000",
+    "categoria": "Alfajores"
+  },
+  {
+    "id": "pastafrolas",
+    "nombre": "PASTAFROLAS",
+    "descripcion": "Opciones disponibles: Membrillo, Batata y Dulce de Leche.",
+    "precio": "Desde $13.300",
+    "categoria": "Tortas",
+    "variantes": [
+      { "sabor": "Batata", "precio": "$13.300" },
+      { "sabor": "Membrillo", "precio": "$13.600" },
+      { "sabor": "Dulce de Leche", "precio": "$14.300" }
+    ]
+  }
+]

@@ -1,0 +1,99 @@
+---
+export const prerender = false;
+
+import Layout from "../../layouts/Layout.astro";
+
+const URL_SHEET_JSON =
+  "https://opensheet.elk.sh/1KzkuYU5amUXubRmFvkf81cLhrjc_NTEKzFzfS_Lr78k/catalogo";
+
+const { id } = Astro.params;
+
+// Traemos todos los productos (podríamos optimizar, pero así es simple)
+const res = await fetch(URL_SHEET_JSON, { cache: "no-store" });
+const data = await res.json();
+
+const products = Array.isArray(data) ? data : data.data ?? Object.values(data);
+
+// Buscar producto por id
+const product = products.find((p) => p.id === id);
+
+if (!product) {
+  return Astro.redirect("/catalogo");
+}
+
+const imagePath = `/images/${product.id}.png`;
+
+const whatsappMessage = `Hola Mica! Te quería consultar por: ${product.nombre} que vi en el catálogo`;
+const whatsappLink = `https://wa.me/5492324650692?text=${encodeURIComponent(
+  whatsappMessage
+)}`;
+---
+
+<Layout title={`${product.nombre} | Moka`}>
+	
+	<div class="flex flex-col justify-center h-full w-full">
+		
+		<div class="max-w-4xl w-full mx-auto fade-in">
+			<a href="/catalogo" class="inline-flex items-center text-sm text-norma-muted hover:text-norma-dark mb-6 transition-colors group">
+				<span class="mr-2 group-hover:-translate-x-1 transition-transform">&larr;</span> Volver al catálogo
+			</a>
+
+			<div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-norma-dark/5 grid md:grid-cols-2">
+				
+                <div class="aspect-square md:aspect-auto bg-[#F5F0EB] relative flex items-center justify-center overflow-hidden">
+					<img 
+						src={imagePath} 
+						alt={product.nombre} 
+						class="w-full h-full object-cover absolute inset-0 md:rounded-l-2xl" 
+						transition:name={`image-${product.id}`}
+						onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+					/>
+                    </div>
+
+				<div class="p-8 md:p-12 flex flex-col justify-center">
+                    <span class="text-norma-accent text-xs font-bold tracking-widest uppercase mb-2">
+						{product.categoria}
+					</span>
+					
+					<h1 class="font-serif text-3xl md:text-4xl font-bold text-norma-dark mb-6 leading-tight">
+						{product.nombre}
+					</h1>
+
+					<div class="text-norma-muted leading-relaxed mb-8 text-lg">
+						{product.descripcion}
+					</div>
+
+                    {product.variantes ? (
+						<div class="bg-norma-base p-4 rounded-lg mb-8 border border-norma-dark/5">
+							<ul class="space-y-2">
+								{product.variantes.map(v => (
+									<li class="flex justify-between text-norma-dark">
+										<span>{v.sabor}</span>
+										<span class="font-bold">{v.precio}</span>
+									</li>
+								))}
+							</ul>
+						</div>
+					) : (
+						<div class="text-3xl font-serif text-norma-dark mb-8">
+							$ {product.precio || "Consultar precio"}
+						</div>
+					)}
+
+					<a 
+						href={whatsappLink}
+						target="_blank"
+						class="block w-full text-center bg-norma-dark text-white py-4 rounded-lg font-semibold tracking-wide hover:bg-norma-accent transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+					>
+						Pedir por WhatsApp
+					</a>
+					
+					<p class="text-center text-xs text-norma-muted mt-4">
+						Pedidos con 24/48hs de anticipación.
+					</p>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+</Layout>

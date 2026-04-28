@@ -1,0 +1,82 @@
+---
+interface Props {
+	id: string;
+	nombre: string;
+	precio: string;
+	categoria: string;
+}
+
+const { id, nombre, precio, categoria } = Astro.props;
+const imagePath = `/images/${id}.png`;
+
+const precioNumero = Number(precio);
+
+const precioFormateado = isNaN(precioNumero)
+  ? "Consultar"
+  : new Intl.NumberFormat("es-AR").format(precioNumero);
+
+---
+
+<a 
+  href={`/producto/${id}`} 
+  class="group relative flex flex-col bg-white rounded-2xl overflow-hidden border border-norma-dark/5 shadow-sm hover:shadow-xl hover:border-norma-accent/30 transition-all duration-300 ease-out transform hover:-translate-y-1 h-full"
+>
+    
+    <div class="relative aspect-square overflow-hidden bg-norma-muted/10">
+        
+        <div class="absolute top-3 left-3 z-10">
+            <span class="px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-norma-dark bg-white/90 backdrop-blur-md rounded-full shadow-sm border border-white/20">
+                {categoria}
+            </span>
+        </div>
+
+        <img 
+            src={imagePath} 
+            alt={nombre} 
+            loading="eager"
+            transition:name={`image-${id}`}
+            class="w-full h-full object-cover transition-opacity duration-500"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+        />
+
+        <div class="hidden absolute inset-0 flex-col items-center justify-center text-norma-muted bg-[#F5F0EB] p-4 text-center">
+            <span class="font-serif text-4xl mb-2 opacity-30">NC</span>
+            <span class="text-[10px] uppercase tracking-widest opacity-60">Sin foto</span>
+        </div>
+
+        <div class="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+    </div>
+
+    <div class="p-5 flex flex-col grow justify-between">
+        
+        <div>
+            <h3 class="font-serif text-lg md:text-xl font-bold text-norma-dark leading-tight mb-2 group-hover:text-norma-accent transition-colors">
+                {nombre}
+            </h3>
+            
+            <div class="w-8 h-0.5 bg-norma-accent/30 mb-3 rounded-full"></div>
+        </div>
+
+        <div class="flex items-center justify-between mt-2">
+            <div class="flex flex-col">
+                <span class="text-xs text-norma-muted font-medium uppercase tracking-wider">Precio</span>
+                <span class="text-lg font-bold text-norma-dark">
+                    { `$ ${precioFormateado}` || "Consultar"}
+                </span>
+            </div>
+
+            <div class="w-10 h-10 rounded-full bg-norma-base border border-norma-dark/10 flex items-center justify-center group-hover:bg-norma-dark group-hover:border-norma-dark transition-all duration-300 shadow-sm">
+                <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    class="w-4 h-4 text-norma-dark group-hover:text-white transition-colors transform group-hover:-rotate-45 duration-300" 
+                    fill="none" 
+                    viewBox="0 0 24 24" 
+                    stroke="currentColor" 
+                    stroke-width="2"
+                >
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+            </div>
+        </div>
+    </div>
+</a>

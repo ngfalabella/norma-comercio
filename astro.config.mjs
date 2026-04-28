@@ -1,5 +1,15 @@
-// @ts-check
 import { defineConfig } from 'astro/config';
+import tailwindcss from '@tailwindcss/vite';
+import vercel from '@astrojs/vercel/serverless';
 
-// https://astro.build/config
-export default defineConfig({});
+export default defineConfig({
+  site: 'https://catalogo-26.vercel.app',
+
+  output: 'server',
+
+  adapter: vercel(),
+
+  vite: {
+    plugins: [tailwindcss()],
+  },
+});

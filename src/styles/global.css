@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@theme {
+  /* ... tus variables de colores ... */
+  /* --color-norma-base: #FAF9F6;
+  --color-norma-dark: #3E2723;
+  --color-norma-accent: #D4AF37;
+  --color-norma-muted: #8D6E63;
+  --color-norma-card: #FFFFFF; */
+
+  
+--color-norma-base:   #FCFBF7; /* fondo principal */
+--color-norma-dark:   #3E0D17; /* main / marca */
+--color-norma-accent: #955256; /* acentos */
+--color-norma-muted:  #928B78; /* texto secundario */
+--color-norma-card:   #FFFFFF; /* cards */
+
+/* color existente, uso restringido */
+--color-norma-support: #5D563C; /* footer / divisores */
+
+  --font-sans: 'Inter', sans-serif;
+  --font-serif: 'Playfair Display', serif;
+}
+
+@layer utilities {
+  .fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- SOLO DEJAMOS ESTO --- */
+/* Controla la velocidad del viaje de la foto */
+::view-transition-group(*) {
+  animation-duration: 0.6s;
+  /* Un poco más rápido para que se sienta ágil */
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  /* Curva suave "ease-out" */
+}

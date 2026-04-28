@@ -1,0 +1,36 @@
+---
+import products from '../data/productos.json';
+
+// Obtenemos las categorías únicas
+const categorias = [...new Set(products.map(p => p.categoria))];
+---
+
+<nav class="fixed bottom-0 left-0 w-full z-50 md:hidden bg-white/90 backdrop-blur-md border-t border-norma-dark/10 pb-safe">
+    <div class="flex items-center gap-3 px-4 py-4 overflow-x-auto no-scrollbar scroll-smooth">
+        {categorias.map(cat => (
+            <a 
+                href={`#${cat}`} 
+                class="flex-shrink-0 px-5 py-2.5 rounded-full bg-norma-base text-norma-dark border border-norma-dark/10 text-xs font-bold uppercase tracking-wider whitespace-nowrap shadow-sm hover:bg-norma-dark hover:text-white hover:border-transparent active:scale-95 transition-all duration-200"
+            >
+                {cat}
+            </a>
+        ))}
+    </div>
+    
+    <div class="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-white to-transparent pointer-events-none"></div>
+</nav>
+
+<style>
+    /* Ocultar la barra de scroll pero permitir el deslizamiento */
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    /* Ajuste para iPhones modernos (el área segura de abajo) */
+    .pb-safe {
+        padding-bottom: env(safe-area-inset-bottom, 20px);
+    }
+</style>
